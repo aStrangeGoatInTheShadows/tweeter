@@ -21,20 +21,40 @@
     color: #FFFF;
     height: 120px;
     width: 100%;
+    /* border: 2px solid green; */
 }
 
 div {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    /* justify-content: center; */
     margin-right: 0.5em;
-    margin-top:0.5em;
+    /* border: 2px solid black; */
 }
+
+i {
+    /* border: 2px dotted purple; */
+    color: red;
+    margin-top: -15%;
+}
+
+/* .smiley {
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    border: 1px solid black;
+  } */
 
 span {
     display:flex;    
-    font-size: 24px;
+    font-size: 36px;
     font-family: 'Bungee';
     margin-left: 1.5em;
     margin-right: 1.5em;
     margin-top: 1em;
+    /* border: 2px solid red; */
   }
 
 
