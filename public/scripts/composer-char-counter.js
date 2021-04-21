@@ -6,8 +6,6 @@ const maxChar = 140,
 $(document).ready(() => {
     console.log('composer-char-counter has loaded');
     let i= 0;
-///////////////////////// TODO ////////////////////////////////
-////// Currently does't update if you use back space or delete
     $("#tweet-text").on('input',() => {
         const charCount = $("#tweet-text").val().length;
 
