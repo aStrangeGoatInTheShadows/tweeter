@@ -47,7 +47,7 @@ i {
     border: 1px solid black;
   } */
 
-span {
+.logo {
     display:flex;    
     font-size: 36px;
     font-family: 'Bungee';

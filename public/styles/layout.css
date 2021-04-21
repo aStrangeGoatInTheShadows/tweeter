@@ -20,7 +20,7 @@ html {
    width: 90%;
    margin-left:5%;
    font-family: 'Source Sans Pro';
-   border: 2px solid green;
+   /* border: 2px solid green; */
   }
 
   .new-tweet {
@@ -57,7 +57,7 @@ html {
   .tweetFooter {
     display:flex;
     justify-content: space-between;
-    border: 3px blueviolet;
+    /* border: 3px blueviolet; */
   }
 
   #counter {
@@ -67,13 +67,15 @@ html {
   .tweets {
     width: 98%;
     margin-left: 1%;
-    border: 3px solid  blueviolet;
+    margin-bottom: 22%;
+    /* border: 3px solid  blueviolet; */
   }
 
-  .aTweetHeader {
+  .tweetHead {
     display: flex;
     align-items: center;
-    border: 2px solid red;
+    justify-content: space-between;
+    /* border: 2px solid red; */
     
 
     /* WORKING HERE  */
@@ -85,13 +87,17 @@ html {
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    border: 2px solid green;
+    /* border: 2px solid green; */
   }
-
+/* --------------------------------------------------------------------- */
+/* ----------------------- Make the tweet entry spot 3 lines
+Or make it expandable
+Then pad it out --------------------------------------------- */
+/* --------------------------------------------------------------------- */
   #userName {
     display: flex;
-    flex-direction: row-reverse;
-    border: 2px solid yellow;
+
+    /* border: 2px solid yellow; */
   }
 
   #profilePic {
@@ -100,6 +106,13 @@ html {
     margin-right: 0.75em;
     width: 100px;
     height: 100px;
+  }
+
+  .tweetContent {
+    /* border: 3px solid black; */
+    /* display:inline; */
+    border-bottom: 2px solid black;
+    padding: 2%;
   }
   
   body {
