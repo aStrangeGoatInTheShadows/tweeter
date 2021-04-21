@@ -1,0 +1,11 @@
+.myHeader {
+    display: flex;
+    height: 400px;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    /* font-family: 'Source Sans Pro'; */
+    background-color: rgb(11, 241, 222);
+    background-image: url('../images/black-linen.png');
+    border: 2px solid purple;
+}

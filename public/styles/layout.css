@@ -14,11 +14,102 @@ html {
  * Global layout stuff
  */
 
-body {
+ .container {
+   display: flex;
+   flex-direction: column;
+   width: 90%;
+   margin-left:5%;
+   font-family: 'Source Sans Pro';
+   border: 2px solid green;
+  }
+
+  .new-tweet {
+    display:flex;
+    width: 90%;
+    margin-left: 5%;
+    /* border: 2px solid red; */
+  }
+/* YOU CHANGED TO A HEADER TAG SO YOUR USERNAME IS OUT OF WHACK */
+  #tweetButton {
+    background-color: #4056A1;
+    color:white;
+    font-family: 'Bungee';
+    font-size: 90%;
+  }
+
+  #theForm{
+    width:100%;    
+    /* border: 2px dotted purple; */
+  }
+
+  #tweet-text {
+    display:flex;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+    text-align: right;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid black;
+  }
+
+  .tweetFooter {
+    display:flex;
+    justify-content: space-between;
+    border: 3px blueviolet;
+  }
+
+  #counter {
+    font-weight: bold;
+  }
+
+  .tweets {
+    width: 98%;
+    margin-left: 1%;
+    border: 3px solid  blueviolet;
+  }
+
+  .aTweetHeader {
+    display: flex;
+    align-items: center;
+    border: 2px solid red;
+    
+
+    /* WORKING HERE  */
+    /* Set flow to be horizontal */
+  }
+
+  .leftTweet {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border: 2px solid green;
+  }
+
+  #userName {
+    display: flex;
+    flex-direction: row-reverse;
+    border: 2px solid yellow;
+  }
+
+  #profilePic {
+    margin-left:0.75em;
+    margin-top:0.75em;
+    margin-right: 0.75em;
+    width: 100px;
+    height: 100px;
+  }
+  
+  body {
+  display:flex;
+  flex-direction: column;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro';
+  /* border: 5px dotted rgb(3, 170, 53); */
 }
 
 /*
