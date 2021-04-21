@@ -69,7 +69,8 @@ html {
     width: 98%;
     margin-top: 10%;
     margin-left: 1%;
-    margin-bottom: 22%;
+    margin-bottom: 100px;
+    /* margin-bottom: 22%; */
     padding-bottom: 2%;
     border: 3px solid rgb(75, 72, 72);
   }

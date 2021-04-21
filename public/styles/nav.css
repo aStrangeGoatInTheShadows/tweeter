@@ -16,6 +16,7 @@
   
   nav {
     display:flex;
+    position: fixed;
     justify-content: space-between;
     background-color: #4056A1;
     color: #FFFF;
