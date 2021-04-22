@@ -23,7 +23,7 @@
     height: 120px;
     width: 100%;
     z-index: 2;
-    border: 4px solid green;
+    /* border: 4px solid green; */
 }
 
 #newTweetBut {
@@ -55,7 +55,7 @@ i {
     margin-left: 1.5em;
     margin-right: 1.5em;
     margin-top: 1em;
-    border: 2px solid red;
+    /* border: 2px solid red; */
   }
 
 
