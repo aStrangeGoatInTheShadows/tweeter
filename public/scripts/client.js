@@ -28,8 +28,10 @@ $(document).ready(function () {
       type: 'POST',
       data:$(this).serialize()})
       .then(()=>{
-        // updatePage();
+        refreshTweets();
       });
+
+      $("#tweet-text").val('');
   });
 
 
@@ -100,19 +102,30 @@ $(document).ready(function () {
 
   // This loops through an array of tweets and appends them to the dom
   const renderAllTweets = function($tweetData) {
-    for (const tweet of $tweetData) {
+    let backwardsTweetArray = [];
+    $tweetData.slice().reverse()
+    .forEach(function(item) {
+      backwardsTweetArray.push(item)});
+
+      $(".tweets").remove();
+
+    for (const tweet of backwardsTweetArray) {
       const $tweet = renderTweets(tweet);
       $("main").append($tweet); // to add   
     }
   }
-  
-  loadTweets()  
+
+  const refreshTweets =function () {
+    loadTweets()  
     .then(renderAllTweets, null)
     .catch(()=>{
       console.log('Failed to load tweets');
     });    
+  }
   
+  refreshTweets();
 });
+
 
 
 
