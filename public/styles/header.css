@@ -10,3 +10,9 @@
     background-image: url('../images/black-linen.png');
     /* border: 2px solid purple; */
 }
+
+p.userProfileName {
+    font-size: xx-large;
+    /* border: 1px solid red; */
+    margin-top: 0px;
+}

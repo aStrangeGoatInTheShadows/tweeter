@@ -6,51 +6,73 @@
 
 // const arbitaryTime = 1619030849; // Unix time of when i created this
 
+
 // STIL STRUGGLING TO IMPLIMENT TIMEAGO
 $(document).ready(function () {
 
+  $(".composeTweet").on('click', function () {
+    if ($(".new-tweet").is(":hidden")) {
+      $(".new-tweet").slideDown("slow", () => { });
+      return;
+    }
+    $(".new-tweet").slideUp("slow", () => { });
+  });
+
+  const showTweetError = function (msg) {
+    //alert(msg);
+    $(".tweetSubmissionError").text((msg));
+    $(".tweetSubmissionError").slideDown("slow", () => { });
+  }
+
+
   // #theForm is the form connected to the Tweet button
-  $( "#theForm" ).submit(function( event ) {
-    event.preventDefault();    
-    
-    if($("#tweet-text").val().length > maxChar){
-      alert( "No one has time for read your tweet. Make it shorter. Infact keep it under 140 characters." );
+  $("#theForm").submit(function (event) {
+    event.preventDefault();
+    let wait = 0; // Wait time to clear error in milliseconds
+
+    if ($("#tweet-text").val().length > maxChar) {
+      showTweetError("Your not that interesting. keep it under 140 Characters!");
       return;
     }
 
     if ($("#tweet-text").val().length === 0) {
-      alert( "You didn't enter anything. No text, no tweet!!!!" );
+      showTweetError("Oh come on now little one, your not that boring. Share a thought.");
       return;
     }
 
+    if ($("#tweet-text").val().includes('<') || $("#tweet-text").val().includes('>')) {
+      showTweetError("You're not as smart as you think you are.");
+    };
+
     $.ajax({
-      url:'./tweets',
+      url: './tweets',
       type: 'POST',
-      data:$(this).serialize()})
-      .then(()=>{
+      data: $(this).serialize()
+    })
+      .then(() => {
+        // console.log(this);
         refreshTweets();
       });
 
-      $("#tweet-text").val('');
+    clearTweetError();
   });
 
+  const clearTweetError = function () {
+    $(".tweetSubmissionError").slideUp("fast", () => { });
+    $("#tweet-text").val('');
+  }
 
-// $(function() {
-//   const $button = $('#load-more-posts');
-//   $button.on('click', function () {
-//     console.log('Button clicked, performing ajax call...');
-//     $.ajax('more-posts.html', { method: 'GET' })
-//     .then(function (morePostsHtml) {
-//       console.log('Success: ', morePostsHtml);
-//       $button.replaceWith(morePostsHtml);
-//     });
-//   });
-// });
-
-
-
-
+  // Creates the dom for a singular tweet
   const renderTweets = function (twtObj) {
+    // Creates a variable to represent the time since the weet
+    const timeSince = timeago.format(twtObj.created_at);
+
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
+
     let $tweetHTML = `<section class='tweets'>
       <header class='tweetHead'>
       <div class='leftTweet'>
@@ -63,7 +85,7 @@ $(document).ready(function () {
       </header>
       <div class='tweetContent'><a class='tweetArticle'>${twtObj.content.text}</a></div>
       <footer>
-      <time class='timeSinceTweet'>${twtObj.created_at}</time>
+      <time class='timeSinceTweet'>${timeSince}</time>
       </footer>
       </section>`;
 
@@ -74,7 +96,7 @@ $(document).ready(function () {
   //////////////////////////////////////////////////// //////////////////////////////////////////////////// //////////////////////////////////////////////////// 
   //////////////////////////////////////////////////// MUST CHANGE DATA[0] TO ACTUAL INPUT
   // Breaks out data from webpage into a tweet object
-  const createTweetElement = function () { 
+  const createTweetElement = function () {
     const user = {
       name: data[0].user.name,
       avatars: data[0].user.avatars,
@@ -95,19 +117,20 @@ $(document).ready(function () {
   };
 
 
-  const loadTweets = () => {   
+  const loadTweets = () => {
     return $.getJSON('./tweets/');
   }
 
 
   // This loops through an array of tweets and appends them to the dom
-  const renderAllTweets = function($tweetData) {
+  const renderAllTweets = function ($tweetData) {
     let backwardsTweetArray = [];
     $tweetData.slice().reverse()
-    .forEach(function(item) {
-      backwardsTweetArray.push(item)});
+      .forEach(function (item) {
+        backwardsTweetArray.push(item)
+      });
 
-      $(".tweets").remove();
+    $(".tweets").remove();
 
     for (const tweet of backwardsTweetArray) {
       const $tweet = renderTweets(tweet);
@@ -115,16 +138,24 @@ $(document).ready(function () {
     }
   }
 
-  const refreshTweets =function () {
-    loadTweets()  
-    .then(renderAllTweets, null)
-    .catch(()=>{
-      console.log('Failed to load tweets');
-    });    
+  const refreshTweets = function () {
+    loadTweets()
+      .then(renderAllTweets, null)
+      .catch(() => {
+        console.log('Failed to load tweets');
+      });
   }
   
+  // its an init function init
+  const init = function () {
+    $(".new-tweet").hide();
+    $(".tweetSubmissionError").hide();
+  }
+
+  init();
   refreshTweets();
 });
+
 
 
 

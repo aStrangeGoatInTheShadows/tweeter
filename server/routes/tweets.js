@@ -34,7 +34,7 @@ module.exports = function(DataHelpers) {
       created_at: Date.now()
     };
 
-    console.log(tweet);
+    // console.log(tweet);
 
     DataHelpers.saveTweet(tweet, (err) => {
       if (err) {

@@ -22,39 +22,54 @@
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous"></script>
-
+    <!-- Call for SASS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.js" integrity="sha512-o3uttbIx94NYlTeI0PE6dm6OJRORmL1iBJqeAylDhVm+iwPwCl/x566K4hBFUoSPkr7hG8tur0WVCUR+wNsRXA==" crossorigin="anonymous"></script>
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+<!-- DISABLE VIEWPORT RESIZE -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' /> 
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
+    <div>
     <nav>
-      <span class='logo'>tweeter</span>
+      <div class="logoAndSubText">
+      <span class='logo'>PAC tweeter</span>
+      <a class="logoSubText">Passive Agressive & Condescending</a>
+    </div>
       <div id="newTweetBut">
-        <p><strong>Write </strong> a new tweet </p>
-        <i class="fas fa-angle-double-down"></i>
+        <p class="composeTweet"><strong>Write </strong> a new tweet </p>
+        <i class="fas fa-angle-double-down composeTweet"></i>
       </div>      
     </nav>
 
-    <header class='myHeader'>
-      
+    <header class='myHeader'>      
       <div>
-          <img src="/images/profile-hex.png"> 
+          <img class='userProfilePic' src="/images/profile-hex.png"> 
       </div>
       <br>
       <div>
-          <h2>Steve Mcqueen</h2>
+          <p class='userProfileName'>Steve Mcqueen</p>
       </div>
   </header>
+</div>
 
-    <!-- Page-specific (main) content here -->
+      <!-- Page-specific (main) content here -->
     <main class="container">
-      <section class="new-tweet">
-        <!-- TOOK OUT POST METHOD ON ACTION BELO -->
+      <section class="new-tweet">        
         <form action="/tweets/" id='theForm'>
-          <!-- <label id='hum' for="tweet-text">What are you humming about?</label> -->
+        
+        <!-- FIND OUT WHY THE EXCLAMATION MARKS ARE WAY OUTSIDE THE TEXT -->
+        
+          <div class='tweetSubmissionError'>
+            <!-- <i class="fas fa-exclamation-triangle"></i> -->
+            This is an error message
+            <!-- <i class="fas fa-exclamation-triangle"></i> -->
+          </div>   
+          
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class='tweetFooter'>
             <button id='tweetButton' type="submit">Tweet</button>

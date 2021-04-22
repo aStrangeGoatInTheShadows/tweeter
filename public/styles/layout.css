@@ -33,18 +33,39 @@ html {
 /* YOU CHANGED TO A HEADER TAG SO YOUR USERNAME IS OUT OF WHACK */
   #tweetButton {
     background-color: #4056A1;
+    outline:none;
     color:white;
     font-family: 'Bungee';
     font-size: 90%;
   }
 
   #theForm{
+    display: flex;
+    flex-direction: column;
     width:100%;    
     /* border: 2px dotted purple; */
   }
 
+  .tweetSubmissionError {
+    display: flex;
+    justify-content: center;
+    /* visibility:hidden; */
+    color: red;
+    border: 3px solid red;
+    padding-top: 1%;
+    padding-bottom: 1%;
+  }
+
+  /* .fa-exclamation-triangle {
+  }
+   */
+
   #tweet-text {
     display:flex;
+    /* Disables outline on focus and removes the corner resizer */
+    outline:none;
+    resize: none;
+
     width: 90%;
     margin-left: 5%;
     margin-bottom: 1%;
@@ -141,9 +162,47 @@ Then pad it out --------------------------------------------- */
   /* border: 5px dotted rgb(3, 170, 53); */
 }
 
+
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
  /* font-family: 'Bungee', cursive;
 font-family: 'Source Sans Pro', sans-serif; */
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  .container{
+    margin-top: 120px;
+    margin-left: 40%;
+  }
+body {
+  display: flex;
+  flex-direction: row;
+}
+.myHeader{
+  margin-left:5%;
+  margin-top: 15% !important;
+  width: 27% !important;
+  /* margin-top: 80% !important; */
+  position:fixed;
+  /* border: 10px solid black; */
+}
+.userProfilePic{
+  margin-top: 15%;
+}
+.userProfileName {
+  margin-bottom: 50px !important;
+}
+}
+
+@media only screen and (max-width: 535px) {
+  .logoSubText {
+    visibility: hidden !important;
+    border: 5px solid red;
+  }
+
+  nav {
+    text-align: center;
+  }
+}

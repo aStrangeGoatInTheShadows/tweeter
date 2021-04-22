@@ -14,6 +14,7 @@
    * Global layout stuff
    */
   
+   /* TTHE FIXED POSITION ON NAV MAKES IT NO MOVE WITH THE PAGE RESIZE */
   nav {
     display:flex;
     position: fixed;
@@ -30,31 +31,36 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    font-size: 18px;
+    font-size: smaller;
     /* justify-content: center; */
+    margin-top: 2%;
     margin-right: 0.5em;
 }
 
 i {
     /* border: 2px dotted purple; */
     color: red;
-    margin-top: -15%;
+    margin-top: -12%;
 }
 
-/* .smiley {
-    display: flex;
-    align-items: center;
-    font-size: 4rem;
-    border: 1px solid black;
-  } */
+.logoSubText {
+  font-size: smaller;
+  visibility: visible;
+}
+
+.logoAndSubText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.5em;
+}
 
 .logo {
     display:flex;    
     font-size: 36px;
     font-family: 'Bungee';
-    margin-left: 1.5em;
+
     margin-right: 1.5em;
-    margin-top: 1em;
+    margin-top: 6%;
     /* border: 2px solid red; */
   }
 
