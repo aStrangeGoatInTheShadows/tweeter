@@ -6,20 +6,35 @@
 
 // const arbitaryTime = 1619030849; // Unix time of when i created this
 
+// const startHover = function ($element) {
+// $($element).css('box-shadow', '5px 10px #888888');
+// alert('hober');
+// }
 
-// STIL STRUGGLING TO IMPLIMENT TIMEAGO
+// const stopHover = function ($element) {
+//    $($element).css('box-shadow','none');
+// }
+
 $(document).ready(function () {
+
+  $(".tweets").hover(function(){
+    $(this).css("background-color", "yellow");
+    }, function(){
+    $(this).css("background-color", "pink");
+  });
+
 
   $(".composeTweet").on('click', function () {
     if ($(".new-tweet").is(":hidden")) {
       $(".new-tweet").slideDown("slow", () => { });
+
+      document.getElementById("tweet-text").focus();
       return;
     }
     $(".new-tweet").slideUp("slow", () => { });
   });
 
   const showTweetError = function (msg) {
-    //alert(msg);
     $(".tweetSubmissionError").text((msg));
     $(".tweetSubmissionError").slideDown("slow", () => { });
   }
@@ -42,6 +57,7 @@ $(document).ready(function () {
 
     if ($("#tweet-text").val().includes('<') || $("#tweet-text").val().includes('>')) {
       showTweetError("You're not as smart as you think you are.");
+      wait += 5000;
     };
 
     $.ajax({
@@ -52,15 +68,15 @@ $(document).ready(function () {
       .then(() => {
         // console.log(this);
         refreshTweets();
+        clearTweetError(wait);
       });
-
-    clearTweetError();
+      $("#tweet-text").val('');
   });
 
-  const clearTweetError = function () {
+  const clearTweetError = function (wait) {return setTimeout (() => {
     $(".tweetSubmissionError").slideUp("fast", () => { });
-    $("#tweet-text").val('');
-  }
+    }, wait)
+  };
 
   // Creates the dom for a singular tweet
   const renderTweets = function (twtObj) {
@@ -83,7 +99,7 @@ $(document).ready(function () {
       <p id="userName">${twtObj.user.handle}</p>
       <!-- end aTweetHeader -->
       </header>
-      <div class='tweetContent'><a class='tweetArticle'>${twtObj.content.text}</a></div>
+      <div class='tweetContent'><a class='tweetArticle'>${escape(twtObj.content.text)}</a></div>
       <footer>
       <time class='timeSinceTweet'>${timeSince}</time>
       </footer>

@@ -96,6 +96,10 @@ html {
     border: 3px solid rgb(75, 72, 72);
   }
 
+  .tweets:hover {
+    box-shadow: 3px 3px red, -1em 0 .4em olive;
+  }
+
   .tweetHead {
     display: flex;
     align-items: center;
