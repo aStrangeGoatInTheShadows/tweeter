@@ -1,0 +1,126 @@
+
+  #tweet-text {
+    display:flex;
+    /* Disables outline on focus and removes the corner resizer */
+    outline:none;
+    resize: none;
+
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+    text-align: right;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(75, 72, 72);
+  }
+
+  .newTweetFooter {
+    display:flex;
+    justify-content: space-between;
+    /* border: 3px blueviolet; */
+  }
+
+  #counter {
+    font-weight: bold;
+  }
+
+  .tweets {
+    width: 98%;
+    margin-top: 4%;
+    margin-left: 1%;
+    margin-bottom: 4%;
+    /* margin-bottom: 22%; */
+    padding-bottom: 2%;
+    border: 3px solid rgb(75, 72, 72);
+  }
+
+  /* box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color]; */
+
+  .tweets:hover {
+    box-shadow: 5px 5px 20px#778472;
+    /* opacity: 0.5; */
+  }
+/* secondary arguement */
+  /*  -1em 0 .4em #D1FFC6 */
+
+  .tweetHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+  }
+
+  .leftTweet {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    /* border: 2px solid green; */
+  }
+
+  #userHandle {
+    display: flex;
+    margin-right: 2%;
+    margin-top: 2%;
+    font-size:smaller;
+    /* border: 2px solid yellow; */
+  }
+
+  #profilePic {
+    margin-left:0.75em;
+    margin-top:0.75em;
+    margin-right: 0.75em;
+    width: 100px;
+    height: 100px;
+  }
+
+  .tweetContent {
+    /* border: 3px solid black; */
+    /* display:inline; */
+    border-bottom: 2px solid black;
+    width: 95%;
+    margin-left: 2.5%;
+    padding: 2%;
+  }
+
+  .tweetFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 2px solid black; */
+  }
+
+  .tweetIcons {
+    display: flex;
+    flex-direction: row; 
+    color: #4056A1;
+    /* align-items: center; */
+    margin-right: 5%;
+    margin-top: 2%;
+    height:fit-content;
+  }
+
+  #iFlag:hover{
+    color: #778472;
+  }
+  #iRetweet:hover{
+    color: #778472;
+  }
+  #iHeart:hover{
+    color: #778472;
+  }
+
+  #iRetweet {
+    margin-right: 10%;
+    margin-left: 10%;
+    /* border: 1px solid black; */
+  }
+
+  .timeSinceTweet {
+    display: flex;
+    margin-top:2%;
+    margin-left: 3%;
+    font-size: 75%;
+    /* border: 3px solid red !important; */
+  }

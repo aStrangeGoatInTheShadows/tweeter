@@ -6,17 +6,26 @@
 
 $(document).ready(function () {
 
-  $(window).scroll(function() {
-    const scrollPos = $(window).scrollTop();
-    console.log(scrollPos);
 
-    if(scrollPos > 600) {
+  // $(window).scroll(function () {
+  //   const scrollPos = $(window).scrollTop();
+  //   console.log(scrollPos);
 
-    }
-  });
+  //   if (scrollPos > 600) {
+
+  //   }
+  // });
 
 
   $(".composeTweet").on('click', function () {
+    $("#tweetDownArrow").animate({
+      "right": "+=30px" 
+    }, "slow")
+    // $("#tweetDownArrow").animate({
+    //   "up": "+=30px"
+    // }, "slow")
+  
+
     if ($(".new-tweet").is(":hidden")) {
       $(".new-tweet").slideDown("slow", () => { });
       document.getElementById("tweet-text").focus();
@@ -30,21 +39,18 @@ $(document).ready(function () {
     $(".tweetSubmissionError").slideDown("slow", () => { });
   }
 
-
+// This submits a tweet on upon hitting enter
   $("#theForm").keypress(function (e) {
-    if(e.which == 13) {
-        //submit form via ajax, this is not JS but server side scripting so not showing here
-        $("#theForm").submit();
-        // e.preventDefault();
+    if (e.which == 13) {
+      submitATweet(event)
     }
-});
+  });
 
-const submitATweet = function () {
-  
-}
+  const submitATweet = function (event) {
+    console.log(event);
+    console.log('tweet tweet');
 
-  // #theForm is the form connected to the Tweet button
-  $("#theForm").submit(function (event) {
+
     event.preventDefault();
     let wait = 0; // Wait time to clear error in milliseconds
 
@@ -66,18 +72,25 @@ const submitATweet = function () {
     $.ajax({
       url: './tweets',
       type: 'POST',
-      data: $(this).serialize()
+      data: $('#theForm').serialize()
     })
       .then(() => {
         // console.log(this);
         refreshTweets();
         clearTweetError(wait);
       });
-      $("#tweet-text").val('');
+    $("#tweet-text").val('');
+  }
+
+  // #theForm is the form connected to the Tweet button
+  $("#theForm").submit(function (event) {
+    submitATweet(event);
+
   });
 
-  const clearTweetError = function (wait) {return setTimeout (() => {
-    $(".tweetSubmissionError").slideUp("fast", () => { });
+  const clearTweetError = function (wait) {
+    return setTimeout(() => {
+      $(".tweetSubmissionError").slideUp("fast", () => { });
     }, wait)
   };
 
@@ -96,11 +109,9 @@ const submitATweet = function () {
       <header class='tweetHead'>
       <div class='leftTweet'>
       <img id='profilePic' src="${twtObj.user.avatars}">
-      <h5>${twtObj.user.name}</h5>
-      <!-- end leftTweet -->
+      <a>${twtObj.user.name}</a>
       </div>
-      <p id="userName">${twtObj.user.handle}</p>
-      <!-- end aTweetHeader -->
+      <p id="userHandle">${twtObj.user.handle}</p>
       </header>
       <div class='tweetContent'><a class='tweetArticle'>${escape(twtObj.content.text)}</a></div>
       <footer class="tweetFooter">
@@ -115,7 +126,7 @@ const submitATweet = function () {
 
     return $($tweetHTML);
   };
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // working above to add icons
   // working above to add icons
   // working above to add icons
@@ -174,7 +185,7 @@ const submitATweet = function () {
         console.log('Failed to load tweets');
       });
   }
-  
+
   // its an init function init
   const init = function () {
     $(".new-tweet").hide();

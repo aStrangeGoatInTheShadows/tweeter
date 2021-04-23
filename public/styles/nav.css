@@ -10,11 +10,6 @@
     box-sizing: inherit;
   }
   
-  /*
-   * Global layout stuff
-   */
-  
-   /* TTHE FIXED POSITION ON NAV MAKES IT NO MOVE WITH THE PAGE RESIZE */
   nav {
     display:flex;
     padding-left: 1px;
@@ -34,15 +29,14 @@
     flex-direction: column;
     align-items: center;
     font-size: smaller;
-    /* justify-content: center; */
     margin-top: 1.5%;
     margin-right: 4%;
 }
 
 #tweetDownArrow {
-    /* border: 2px dotted purple; */
-    color: red;
-    margin-top: -12%;
+  color: red;
+  margin-top: -12%;
+  /* border: 2px dotted purple; */
 }
 
 .logoSubText {
@@ -65,14 +59,3 @@
     margin-top: 6%;
     /* border: 2px solid red; */
   }
-
-
-
-
-  
-  /*
-   * Additional CSS can be defined below or in other CSS files, as per instructions
-   */
-  
-   /* font-family: 'Bungee', cursive;
-  font-family: 'Source Sans Pro', sans-serif; */

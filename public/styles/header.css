@@ -6,7 +6,7 @@
     align-items: center;
     flex-direction: column;
     /* font-family: 'Source Sans Pro'; */
-    background-color: rgb(11, 241, 222);
+    background-color:#BBD5ED;
     background-image: url('../images/black-linen.png');
     /* border: 2px solid purple; */
 }
@@ -15,4 +15,8 @@ p.userProfileName {
     font-size: xx-large;
     /* border: 1px solid red; */
     margin-top: 0px;
+}
+
+#userProfilePic {
+    margin-top: 10%;
 }
