@@ -7,13 +7,18 @@ $(document).ready(function () {
 
   // User clicks to open dialogue to create a tweet
   $(".composeTweet").on('click', function () {
+    // Show tweet box hide instructions
     if ($(".new-tweet").is(":hidden")) {
-      $(".new-tweet").slideDown("slow", () => { });
+      $("#instructions").slideUp("fast", () => {
+        $(".new-tweet").slideDown("slow", () => { });
+      });
+      // change focus to tweet entry box for keyboard entry
       document.getElementById("tweet-text").focus();
       return;
-    }
-
-    $(".new-tweet").slideUp("slow", () => { });
+    } // hides tweet box and puts instructions back incase the user has Alzheimer's 
+    $(".new-tweet").slideUp("slow", () => {
+      $("#instructions").slideDown("fast", () => { });
+    });
   });
 
   // Displays an error message (no validation is done here)
@@ -50,7 +55,7 @@ $(document).ready(function () {
       type: 'POST',
       data: $('#theForm').serialize()
     })
-    // This reload the tweets and clears any errors
+      // This reload the tweets and clears any errors
       .then(() => {
         refreshTweets();
         clearTweetError(wait);
@@ -146,12 +151,12 @@ $(document).ready(function () {
         backwardsTweetArray.push(item)
       });
 
-      // Completely removes all DOM tweets
+    // Completely removes all DOM tweets
     $(".tweets").remove();
 
     for (const tweet of backwardsTweetArray) {
       const $tweet = renderTweets(tweet);
-      $("main").append($tweet);  
+      $("main").append($tweet);
     }
   }
 
