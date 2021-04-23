@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
 
-<!--@ MATT TIMEAGO INJECTION BELOW!!!!!  -->
-
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous"></script>
@@ -45,7 +43,7 @@
         <i id='tweetDownArrow' class="fas fa-angle-double-down composeTweet"></i>
       </div>      
     </nav>
-
+<!-- This is our main square and profile picture header -->
     <header class='myHeader'>      
       <div>
           <img id='userProfilePic' class='userProfilePic' src="/images/profile-hex.png"> 
@@ -60,16 +58,10 @@
       <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">        
-        <form action="/tweets/" id='theForm'>
-        
-        <!-- FIND OUT WHY THE EXCLAMATION MARKS ARE WAY OUTSIDE THE TEXT -->
-        
+        <form action="/tweets/" id='theForm'>        
           <div class='tweetSubmissionError'>
-            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-            This is an error message
-            <!-- <i class="fas fa-exclamation-triangle"></i> -->
-          </div>   
-          
+            This is an error message         <!-- Displays our error messages relating to tweet submissions -->
+          </div>         
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class='newTweetFooter'>
             <button id='tweetButton' type="submit">Tweet</button>
@@ -78,10 +70,7 @@
         </form>
       </section>
     </main>
-    <!-- <button id='returnToTop' class="btn btn-primary btn-lg" type="submit">Back To Top</button> -->
   </body>
 </html>
 
 <!-- CSS RULES -->
-<!-- font-family: 'Bungee', cursive;
-font-family: 'Source Sans Pro', sans-serif; -->

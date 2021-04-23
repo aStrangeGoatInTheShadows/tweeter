@@ -20,17 +20,17 @@ html {
    width: 90%;
    margin-left:5%;
    font-family: 'Source Sans Pro';
-   /* border: 2px solid green; */
   }
 
+  /*  Drop down to create new tweet */
   .new-tweet {
     display:flex;
     width: 90%;
     margin-top: 5%;
     margin-left: 5%;
-    /* border: 2px solid red; */
   }
-/* YOU CHANGED TO A HEADER TAG SO YOUR USERNAME IS OUT OF WHACK */
+
+  /* Big blue logo styled button  */
   #tweetButton {
     background-color: #4056A1;
     outline:none;
@@ -39,28 +39,23 @@ html {
     font-size: 90%;
   }
 
+  /* The textbox to enter text for new tweets */
   #theForm{
     display: flex;
     flex-direction: column;
     width:100%;    
-    /* border: 2px dotted purple; */
   }
 
+  /* Redbox that pops up on invalid input */
   .tweetSubmissionError {
     display: flex;
     justify-content: center;
-    /* visibility:hidden; */
     color: red;
     border: 3px solid red;
     padding-top: 1%;
     padding-bottom: 1%;
   }
-
-  /* .fa-exclamation-triangle {
-  }
-   */
-
-  
+    
   body {
   display:flex;
   flex-direction: column;
@@ -69,30 +64,8 @@ html {
   font-size: 24px;
   font-family: 'Source Sans Pro';
   font-weight: 600;
-  /* border: 5px dotted rgb(3, 170, 53); */
 }
 
-/* #returnToTop {
-    display:flex;
-    flex-direction: row-reverse;
-    color: white;
-    width: 160px;
-    height: 50px;
-    font-size: large;
-    font-family: 'Source Sans Pro';
-    font-weight: 600;
-  } */
- /* #returnToTop:hover{
-   border-color: rgba(255,255,255,1);
-  } */
-
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
-
- /* font-family: 'Bungee', cursive;
-font-family: 'Source Sans Pro', sans-serif; */
 
 /* Desktop styles */
 @media only screen and (min-width: 1024px) {
@@ -108,9 +81,7 @@ body {
   margin-left:5%;
   margin-top: 15% !important;
   width: 27% !important;
-  /* margin-top: 80% !important; */
   position:fixed;
-  /* border: 10px solid black; */
 }
 .userProfilePic{
   margin-top: 15%;
@@ -120,6 +91,7 @@ body {
 }
 }
 
+/* Hides unimportant subtext when screen gets busy */
 @media only screen and (max-width: 535px) {
   .logoSubText {
     visibility: hidden !important;
@@ -128,5 +100,34 @@ body {
 
   nav {
     text-align: center;
+  }
+}
+
+/* Slightly better formatting for thin screen sizes. Will have to start with this second next time*/
+@media only screen and (max-width: 411px) {
+  .logoSubText {
+    visibility: hidden !important;
+    border: 5px solid red;
+  }
+  .tweetArticle{
+    overflow-wrap: anywhere;
+  }
+
+  .tweetHead{
+  flex-direction: column;
+  }
+  #userHandle {
+    align-self: flex-end;
+    margin-top: -40px !important;
+    margin-right: 12% !important;
+    margin-bottom: 5%;
+    border-bottom: 1px solid black;
+  }
+  .leftTweet {
+    justify-content: space-between !important;
+
+  }
+  .tweets {
+    height: auto;
   }
 }

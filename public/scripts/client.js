@@ -3,89 +3,71 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
 $(document).ready(function () {
 
-
-  // $(window).scroll(function () {
-  //   const scrollPos = $(window).scrollTop();
-  //   console.log(scrollPos);
-
-  //   if (scrollPos > 600) {
-
-  //   }
-  // });
-
-
+  // User clicks to open dialogue to create a tweet
   $(".composeTweet").on('click', function () {
-    $("#tweetDownArrow").animate({
-      "right": "+=30px" 
-    }, "slow")
-    // $("#tweetDownArrow").animate({
-    //   "up": "+=30px"
-    // }, "slow")
-  
-
     if ($(".new-tweet").is(":hidden")) {
       $(".new-tweet").slideDown("slow", () => { });
       document.getElementById("tweet-text").focus();
       return;
     }
+
     $(".new-tweet").slideUp("slow", () => { });
   });
 
+  // Displays an error message (no validation is done here)
   const showTweetError = function (msg) {
     $(".tweetSubmissionError").text((msg));
     $(".tweetSubmissionError").slideDown("slow", () => { });
   }
 
-// This submits a tweet on upon hitting enter
-  $("#theForm").keypress(function (e) {
-    if (e.which == 13) {
-      submitATweet(event)
-    }
-  });
-
+  // This checks the 
   const submitATweet = function (event) {
-    console.log(event);
-    console.log('tweet tweet');
-
-
     event.preventDefault();
     let wait = 0; // Wait time to clear error in milliseconds
 
+    // User tries to write a tweet thats too long
     if ($("#tweet-text").val().length > maxChar) {
-      showTweetError("Your not that interesting. keep it under 140 Characters!");
+      showTweetError(`Your not that interesting. keep it under ${maxChar} Characters!!`);
       return;
     }
-
+    // User tries to send a blank tweet
     if ($("#tweet-text").val().length === 0) {
       showTweetError("Oh come on now little one, your not that boring. Share a thought.");
       return;
     }
 
+    // This is a validish tweet, we just want the user to know that we are onto their tricks
     if ($("#tweet-text").val().includes('<') || $("#tweet-text").val().includes('>')) {
       showTweetError("You're not as smart as you think you are.");
-      wait += 5000;
+      wait = 5000;
     };
 
+    // Send the tweet to the server
     $.ajax({
       url: './tweets',
       type: 'POST',
       data: $('#theForm').serialize()
     })
+    // This reload the tweets and clears any errors
       .then(() => {
-        // console.log(this);
         refreshTweets();
         clearTweetError(wait);
       });
     $("#tweet-text").val('');
   }
 
+  // This submits a tweet on upon hitting enter
+  $("#theForm").keypress(function (e) {
+    if (e.which == 13) {
+      submitATweet(event)
+    }
+  });
+
   // #theForm is the form connected to the Tweet button
   $("#theForm").submit(function (event) {
     submitATweet(event);
-
   });
 
   const clearTweetError = function (wait) {
@@ -99,12 +81,14 @@ $(document).ready(function () {
     // Creates a variable to represent the time since the weet
     const timeSince = timeago.format(twtObj.created_at);
 
+    // Prevents cross scripting via script injection into the create tweet form
     const escape = function (str) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
     };
 
+    // Creates the html for a tweet
     let $tweetHTML = `<section class='tweets'>
       <header class='tweetHead'>
       <div class='leftTweet'>
@@ -126,16 +110,8 @@ $(document).ready(function () {
 
     return $($tweetHTML);
   };
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // working above to add icons
-  // working above to add icons
-  // working above to add icons
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  //////////////////////////////////////////////////// TODO //////////////////////////////////////////////////// //////////////////////////////////////////////////// 
-  //////////////////////////////////////////////////// //////////////////////////////////////////////////// //////////////////////////////////////////////////// 
-  //////////////////////////////////////////////////// MUST CHANGE DATA[0] TO ACTUAL INPUT
-  // Breaks out data from webpage into a tweet object
+  // Left for future update with SQL
   const createTweetElement = function () {
     const user = {
       name: data[0].user.name,
@@ -156,7 +132,7 @@ $(document).ready(function () {
     return tweetObj;
   };
 
-
+  // Gets the tweets from our server
   const loadTweets = () => {
     return $.getJSON('./tweets/');
   }
@@ -170,14 +146,16 @@ $(document).ready(function () {
         backwardsTweetArray.push(item)
       });
 
+      // Completely removes all DOM tweets
     $(".tweets").remove();
 
     for (const tweet of backwardsTweetArray) {
       const $tweet = renderTweets(tweet);
-      $("main").append($tweet); // to add   
+      $("main").append($tweet);  
     }
   }
 
+  // Refreshes all tweets on the page
   const refreshTweets = function () {
     loadTweets()
       .then(renderAllTweets, null)
@@ -196,13 +174,3 @@ $(document).ready(function () {
   refreshTweets();
 });
 
-
-
-
-
-// const $tweet = $(`<article class="tweet">Hello world</article>`);
-
-// CORRECT TIMEAGO USAGE
-// console.log(date);
-
-// console.log(timeago.format(date));

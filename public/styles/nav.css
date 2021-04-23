@@ -10,6 +10,8 @@
     box-sizing: inherit;
   }
   
+
+  /* Top nav bar */
   nav {
     display:flex;
     padding-left: 1px;
@@ -21,9 +23,9 @@
     height: 120px;
     width: 100%;
     z-index: 2;
-    /* border: 4px solid green; */
 }
 
+/* write a new tweet */
 #newTweetBut {
     display:flex;
     flex-direction: column;
@@ -36,7 +38,6 @@
 #tweetDownArrow {
   color: red;
   margin-top: -12%;
-  /* border: 2px dotted purple; */
 }
 
 .logoSubText {
@@ -44,18 +45,17 @@
   visibility: visible;
 }
 
+/* logo and its writing below, only visible on desktop */
 .logoAndSubText {
   display: flex;
   flex-direction: column;
   margin-left: 1.5em;
 }
-
+/* Logo in top left corner */
 .logo {
     display:flex;    
     font-size: 36px;
     font-family: 'Bungee';
-
     margin-right: 1.5em;
     margin-top: 6%;
-    /* border: 2px solid red; */
   }
