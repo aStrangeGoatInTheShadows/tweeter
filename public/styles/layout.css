@@ -76,7 +76,7 @@ html {
     border-bottom: 2px solid rgb(75, 72, 72);
   }
 
-  .tweetFooter {
+  .newTweetFooter {
     display:flex;
     justify-content: space-between;
     /* border: 3px blueviolet; */
@@ -147,6 +147,39 @@ Then pad it out --------------------------------------------- */
     padding: 2%;
   }
 
+  .tweetFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 2px solid black; */
+  }
+
+  .tweetIcons {
+    display: flex;
+    flex-direction: row; 
+    color: #4056A1;
+    /* align-items: center; */
+    margin-right: 5%;
+    margin-top: 2%;
+    height:fit-content;
+  }
+
+  #iFlag:hover{
+    color: blueviolet;
+  }
+  #iRetweet:hover{
+    color: blueviolet;
+  }
+  #iHeart:hover{
+    color: blueviolet;
+  }
+
+  #iRetweet {
+    margin-right: 10%;
+    margin-left: 10%;
+    /* border: 1px solid black; */
+  }
+
   .timeSinceTweet {
     display: flex;
     margin-top:2%;
@@ -165,6 +198,20 @@ Then pad it out --------------------------------------------- */
   font-weight: 600;
   /* border: 5px dotted rgb(3, 170, 53); */
 }
+
+/* #returnToTop {
+    display:flex;
+    flex-direction: row-reverse;
+    color: white;
+    width: 160px;
+    height: 50px;
+    font-size: large;
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+  } */
+ /* #returnToTop:hover{
+   border-color: rgba(255,255,255,1);
+  } */
 
 
 /*

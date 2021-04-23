@@ -4,30 +4,21 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// const arbitaryTime = 1619030849; // Unix time of when i created this
-
-// const startHover = function ($element) {
-// $($element).css('box-shadow', '5px 10px #888888');
-// alert('hober');
-// }
-
-// const stopHover = function ($element) {
-//    $($element).css('box-shadow','none');
-// }
-
 $(document).ready(function () {
 
-  $(".tweets").hover(function(){
-    $(this).css("background-color", "yellow");
-    }, function(){
-    $(this).css("background-color", "pink");
+  $(window).scroll(function() {
+    const scrollPos = $(window).scrollTop();
+    console.log(scrollPos);
+
+    if(scrollPos > 600) {
+
+    }
   });
 
 
   $(".composeTweet").on('click', function () {
     if ($(".new-tweet").is(":hidden")) {
       $(".new-tweet").slideDown("slow", () => { });
-
       document.getElementById("tweet-text").focus();
       return;
     }
@@ -39,6 +30,18 @@ $(document).ready(function () {
     $(".tweetSubmissionError").slideDown("slow", () => { });
   }
 
+
+  $("#theForm").keypress(function (e) {
+    if(e.which == 13) {
+        //submit form via ajax, this is not JS but server side scripting so not showing here
+        $("#theForm").submit();
+        // e.preventDefault();
+    }
+});
+
+const submitATweet = function () {
+  
+}
 
   // #theForm is the form connected to the Tweet button
   $("#theForm").submit(function (event) {
@@ -100,13 +103,23 @@ $(document).ready(function () {
       <!-- end aTweetHeader -->
       </header>
       <div class='tweetContent'><a class='tweetArticle'>${escape(twtObj.content.text)}</a></div>
-      <footer>
+      <footer class="tweetFooter">
       <time class='timeSinceTweet'>${timeSince}</time>
+      <div class="tweetIcons">
+      <i id="iFlag" class="fas fa-flag"></i>
+      <i id="iRetweet" class="fas fa-retweet"></i>
+      <i id="iHeart" class="fas fa-heart"></i>
+      </div>
       </footer>
       </section>`;
 
     return $($tweetHTML);
   };
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // working above to add icons
+  // working above to add icons
+  // working above to add icons
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //////////////////////////////////////////////////// TODO //////////////////////////////////////////////////// //////////////////////////////////////////////////// 
   //////////////////////////////////////////////////// //////////////////////////////////////////////////// //////////////////////////////////////////////////// 

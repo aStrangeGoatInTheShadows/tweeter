@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
@@ -42,7 +43,7 @@
     </div>
       <div id="newTweetBut">
         <p class="composeTweet"><strong>Write </strong> a new tweet </p>
-        <i class="fas fa-angle-double-down composeTweet"></i>
+        <i id='tweetDownArrow' class="fas fa-angle-double-down composeTweet"></i>
       </div>      
     </nav>
 
@@ -71,13 +72,14 @@
           </div>   
           
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-          <div class='tweetFooter'>
+          <div class='newTweetFooter'>
             <button id='tweetButton' type="submit">Tweet</button>
             <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
     </main>
+    <!-- <button id='returnToTop' class="btn btn-primary btn-lg" type="submit">Back To Top</button> -->
   </body>
 </html>
 
